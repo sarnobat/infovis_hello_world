@@ -29,7 +29,6 @@ function init(){
 			
 		{
 			"id"			: 	"graphnode16",
-			"name"			: 	"graphnode16",
 			"data"			:	{
 									"$color"		:	"#C74243",
 									"$type"			:	"star",
@@ -38,31 +37,22 @@ function init(){
 			"adjacencies"	:	[
 									{
 										"nodeTo"	:	"graphnode17",
-										"nodeFrom"	:	"graphnode16",
-										"data"		:	{
-															"$color"	:	"#557EAA"
-														}
+									},
+									{
+										"nodeTo"	:	"graphnode18",
 									}
 								],
 		},
-			
-			{
-			"adjacencies": [
-				{
-				  "nodeTo": "graphnode19",
-				  "nodeFrom": "graphnode18",
-				  "data": {
-					"$color": "#557EAA"
-				  }
-				}, {
-				  "nodeTo": "graphnode20",
-				  "nodeFrom": "graphnode18",
-				  "data": {
-					"$color": "#557EAA"
-				  }
-				}
-			],
-      },
+		
+		{
+			"id"			: 	"graphnode18",
+			"data"			:	{
+									"$color"		:	"blue",
+									"$type"			:	"square",
+									"$dim"			: 	7
+								},
+		}
+
   ]);
   fd.computeIncremental({
     onComplete: function(){
