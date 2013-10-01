@@ -8,9 +8,8 @@ import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import com.sun.net.httpserver.HttpServer;
 
@@ -26,7 +25,8 @@ public class Server {
 		) throws JSONException {
 			System.out.println("1");
 			try {
-				JSONArray json = new JSONArray(
+				JSONArray json = new JSONArray();
+				JSONArray jsonLiteral = new JSONArray(
 						"[{				'id'			: 	'graphnode16','data'			:	{										'"
 								+ ""
 								+ '$'
@@ -43,9 +43,12 @@ public class Server {
 								+ "dim'			: 	7									},			}		]");
 
 				System.out.println("2");
+				if (!json.toString().equals(jsonLiteral.toString())) {
+					//throw new RuntimeException();
+				}
 				System.out.println("3");
 				return Response.ok().header("Access-Control-Allow-Origin", "*")
-						.entity(json.toString()).type("application/json")
+						.entity(jsonLiteral.toString()).type("application/json")
 						.build();
 			} catch (Exception e) {
 				e.printStackTrace();
