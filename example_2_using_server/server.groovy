@@ -55,25 +55,7 @@ public class Server {
 					node2.put("data", node1Data);
 					json.put(node2);
 				}
-				JSONArray jsonLiteral = new JSONArray(
-						"[{				'id'			: 	'graphnode16','data'			:	{										'"
-								+ ""
-								+ '$'
-								+ "color'		:	'#C74243',										'"
-								+ ""
-								+ '$'
-								+ "type'			:	'star',										'"
-								+ ""
-								+ '$'
-								+ "dim'			: 	17									},				'adjacencies'	:	[										{											'nodeTo'	:	'graphnode17',										},										{											'nodeTo'	:	'graphnode18',										}],},{	'id'			: 	'graphnode18',	'data'			:	{										'"
-								+ "" + '$' + "color'		:	'blue',										'"
-								+ "" + '$' + "type'			:	'square',										'"
-								+ "" + '$' + "dim'			: 	7									},			}		]");
-
 				System.out.println("2");
-				if (!json.toString().equals(jsonLiteral.toString())) {
-					// throw new RuntimeException();
-				}
 				System.out.println("3");
 				return Response.ok().header("Access-Control-Allow-Origin", "*")
 						.entity(json.toString()).type("application/json")
