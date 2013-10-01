@@ -14,7 +14,7 @@ var ua = navigator.userAgent;
 
 function init(){
   // init data
-  var json = [
+  var myJsonData = [
       {
         "adjacencies": [
             "graphnode21", 
@@ -260,7 +260,7 @@ function init(){
       color: '#23A4FF',
     },
   });
-  fd.loadJSON(json);
+  fd.loadJSON(myJsonData);
   fd.computeIncremental({
     iter: 40,
     property: 'end',
