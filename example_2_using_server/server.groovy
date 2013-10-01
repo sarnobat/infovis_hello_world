@@ -1,5 +1,3 @@
-
-
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -12,31 +10,53 @@ import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import com.sun.net.httpserver.HttpServer;
 
 public class Server {
-        @Path("helloworld")
-        public static class HelloWorldResource { // Must be public
+	@Path("helloworld")
+	public static class HelloWorldResource { // Must be public
 
-                @GET
-                @Path("data")
-                @Produces("application/json")
-                public Response json(
-                	// TODO: @QueryParam("rootId") Integer iRootId
-                	) throws JSONException {
-                		System.out.println("1");
-                        JSONObject json = new JSONObject("{				'id'			: 	'graphnode16','data'			:	{										'$color'		:	'#C74243',										'$type'			:	'star',										'$dim'			: 	17									},				'adjacencies'	:	[										{											'nodeTo'	:	'graphnode17',										},										{											'nodeTo'	:	'graphnode18',										}],},{	'id'			: 	'graphnode18',	'data'			:	{										'$color'		:	'blue',										'$type'			:	'square',										'$dim'			: 	7									},			}		]");
-                		System.out.println("2");
-                        json.put("foo", "bar");
-                		System.out.println("3");
-					    return Response.ok().header("Access-Control-Allow-Origin", "*")
-						 			.entity(json.toString()).type("application/json").build();
-                }
-        }
+		@GET
+		@Path("data")
+		@Produces("application/json")
+		public Response json(
+		// TODO: @QueryParam("rootId") Integer iRootId
+		) throws JSONException {
+			System.out.println("1");
+			try {
+				JSONArray json = new JSONArray(
+						"[{				'id'			: 	'graphnode16','data'			:	{										'"
+								+ ""
+								+ '$'
+								+ "color'		:	'#C74243',										'"
+								+ ""
+								+ '$'
+								+ "type'			:	'star',										'"
+								+ ""
+								+ '$'
+								+ "dim'			: 	17									},				'adjacencies'	:	[										{											'nodeTo'	:	'graphnode17',										},										{											'nodeTo'	:	'graphnode18',										}],},{	'id'			: 	'graphnode18',	'data'			:	{										'"
+								+ "" + '$' + "color'		:	'blue',										'"
+								+ "" + '$' + "type'			:	'square',										'" 
+								+ "" + '$'
+								+ "dim'			: 	7									},			}		]");
 
-        public static void main(String[] args) throws URISyntaxException {
-                HttpServer server = JdkHttpServerFactory.createHttpServer(
-                                new URI("http://localhost:9099/"), new ResourceConfig(HelloWorldResource.class));
-        }
+				System.out.println("2");
+				System.out.println("3");
+				return Response.ok().header("Access-Control-Allow-Origin", "*")
+						.entity(json.toString()).type("application/json")
+						.build();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	}
+
+	public static void main(String[] args) throws URISyntaxException {
+		HttpServer server = JdkHttpServerFactory.createHttpServer(new URI(
+				"http://localhost:9099/"), new ResourceConfig(
+				HelloWorldResource.class));
+	}
 }
