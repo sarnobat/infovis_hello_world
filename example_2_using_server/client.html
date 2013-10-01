@@ -29,11 +29,8 @@ function init(){
 		},
 	});
 
-	$.getJSON("http://localhost:9099/helloworld/data",function(result){
-		// get data from http://localhost:9099/helloworld/data
-		forceDirectedGraph.loadJSON( result
-				//[{"id":"graphnode16","data":{"$dim":17,"$color":"#C74243","$type":"star"},"adjacencies":[{"nodeTo":"graphnode17"},{"nodeTo":"graphnode18"}]},{"id":"graphnode18","data":{"$dim":7,"$color":"blue","$type":"square"}}]
-			);
+	$.getJSON("http://localhost:9099/helloworld/data", function(result){
+		forceDirectedGraph.loadJSON(result);
 		
 		forceDirectedGraph.computeIncremental({
 			onComplete: function(){
