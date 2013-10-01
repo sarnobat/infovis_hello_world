@@ -13,8 +13,19 @@
 var ua = navigator.userAgent;
 
 function init(){
-  // init data
-  var myJsonData = [
+  
+  // init ForceDirected
+  var fd = new $jit.ForceDirected({
+    injectInto: 'infovis',
+    Node: {
+      overridable: true
+    },
+    Edge: {
+      overridable: true,
+      color: '#23A4FF',
+    },
+  });
+  fd.loadJSON( [
       {
         "adjacencies": [
             "graphnode21", 
@@ -247,20 +258,7 @@ function init(){
         "id": "graphnode18",
         "name": "graphnode18"
       },
-  ];
-  // end
-  // init ForceDirected
-  var fd = new $jit.ForceDirected({
-    injectInto: 'infovis',
-    Node: {
-      overridable: true
-    },
-    Edge: {
-      overridable: true,
-      color: '#23A4FF',
-    },
-  });
-  fd.loadJSON(myJsonData);
+  ]);
   fd.computeIncremental({
     onComplete: function(){
       fd.animate({
