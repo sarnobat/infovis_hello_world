@@ -14,17 +14,17 @@ var ua = navigator.userAgent;
 
 function init(){
   
-  // init ForceDirected
-  var fd = new $jit.ForceDirected({
-    injectInto: 'infovis',
-    Node: {
-      overridable: true
-    },
-    Edge: {
-      overridable: true,
-    },
-  });
-	fd.loadJSON( [
+	var forceDirectedGraph = new $jit.ForceDirected({
+		injectInto: 'infovis',
+		Node: {
+			overridable: true
+		},
+		Edge: {
+			overridable: true,
+		},
+	});
+
+	forceDirectedGraph.loadJSON( [
 			
 			
 		{
@@ -54,13 +54,13 @@ function init(){
 		}
 
   ]);
-  fd.computeIncremental({
-    onComplete: function(){
-      fd.animate({
-      });
-    }
-  });
-  // end
+
+	forceDirectedGraph.computeIncremental({
+		onComplete: function(){
+			forceDirectedGraph.animate({
+			});
+		}
+	});
 }
 
 </script>
