@@ -28,8 +28,9 @@ function init(){
 			overridable: true,
 		},
 	});
+	
 
-	$.getJSON("http://localhost:9099/helloworld/data", function(result){
+	$.getJSON("http://localhost:9099/helloworld/data2", function(result){
 		forceDirectedGraph.loadJSON(result);
 		
 		forceDirectedGraph.computeIncremental({
