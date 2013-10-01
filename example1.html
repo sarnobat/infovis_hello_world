@@ -472,20 +472,6 @@ function init(){
   var fd = new $jit.ForceDirected({
     //id of the visualization container
     injectInto: 'infovis',
-    //Enable zooming and panning
-    //by scrolling and DnD
-    Navigation: {
-      enable: true,
-      //Enable panning events only if we're dragging the empty
-      //canvas (and not a node).
-
-      zooming: 10 //zoom speed. higher is more sensible
-    },
-    // Change node and edge styles such as
-    // color and width.
-    // These properties are also set per node
-    // with dollar prefixed data-properties in the
-    // JSON structure.
     Node: {
       overridable: true
     },
@@ -494,25 +480,12 @@ function init(){
       color: '#23A4FF',
       lineWidth: 0.4
     },
-    //Native canvas text styling
-
-  
-  
     //Number of iterations for the FD algorithm
     iterations: 200,
     //Edge length
     levelDistance: 130,
     // Change node styles when DOM labels are placed
     // or moved.
-    onPlaceLabel: function(domElement, node){
-      var style = domElement.style;
-      var left = parseInt(style.left);
-      var top = parseInt(style.top);
-      var w = domElement.offsetWidth;
-      style.left = (left - w / 2) + 'px';
-      style.top = (top + 10) + 'px';
-      style.display = '';
-    }
   });
   // load JSON data.
   fd.loadJSON(json);
