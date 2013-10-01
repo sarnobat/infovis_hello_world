@@ -262,11 +262,6 @@ function init(){
   });
   fd.loadJSON(myJsonData);
   fd.computeIncremental({
-    iter: 40,
-    property: 'end',
-    onStep: function(perc){
-
-    },
     onComplete: function(){
       fd.animate({
         modes: ['linear'],
